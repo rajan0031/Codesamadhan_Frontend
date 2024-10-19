@@ -16,7 +16,7 @@ const DocumentUpload = () => {
         const selectedFile = event.target.files[0];
         if (selectedFile && acceptedFileTypes.includes(selectedFile.type)) {
             setFile(selectedFile);
-            setFilePreview(URL.createObjectURL(selectedFile)); // we can see files here  
+            setFilePreview(URL.createObjectURL(selectedFile)); // we can see files here  .. like ye selected file is being viewd by this method its a inbuilt method here ,
             setUploadStatus("");
         } else {
             setFile(null);
@@ -46,7 +46,7 @@ const DocumentUpload = () => {
             setUploadStatus("File uploaded successfully!");
             setFile(null);
             // this for clear the the input   area section 
-            setFilePreview(null); // Clear file preview
+            setFilePreview(null); // Clear file preview, ye tab ho raha hai jub we have cliked the file upload button here 
             console.log(response);
         } catch (error) {
             setUploadStatus("Failed to upload file.");
