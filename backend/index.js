@@ -18,7 +18,7 @@ app.use("/", FileUploadRoutes);
 
 // for the testing the backend purpose
 app.get("/", (req, res) => {
-    res.send("hello from the backend 💘")
+    res.send("hello from the backend 😀")
 });
 
 
