@@ -8,15 +8,15 @@ const DocumentUpload = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [filePreview, setFilePreview] = useState(null);
 
-    // Accepted file types (modify as needed)
+    // Accepted file types. here we can change the file types that we wwants from the user 
     const acceptedFileTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
 
-    // Handle file change event with file type validation
+    // it is simple file validation here 
     const handleFileChange = (event) => {
         const selectedFile = event.target.files[0];
         if (selectedFile && acceptedFileTypes.includes(selectedFile.type)) {
             setFile(selectedFile);
-            setFilePreview(URL.createObjectURL(selectedFile)); // For preview
+            setFilePreview(URL.createObjectURL(selectedFile)); // we can see files here  
             setUploadStatus("");
         } else {
             setFile(null);
@@ -25,7 +25,7 @@ const DocumentUpload = () => {
         }
     };
 
-    // Handle form submission
+    // start of the form submisssion here 
     const handleUpload = async (event) => {
         event.preventDefault();
         if (!file) {
@@ -41,18 +41,22 @@ const DocumentUpload = () => {
             const response = await axios.post(uploadFileApi, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                },
+                },// here we are sending file , so need to mention this but if we are sending the form data no need to write anythings here ,.....
             });
             setUploadStatus("File uploaded successfully!");
-            setFile(null); // Clear the file input after upload
+            setFile(null);
+            // this for clear the the input   area section 
             setFilePreview(null); // Clear file preview
             console.log(response);
         } catch (error) {
             setUploadStatus("Failed to upload file.");
         } finally {
-            setIsLoading(false); // Enable the button after the upload process
+            setIsLoading(false); // just to reset , to upload new after click
         }
     };
+
+
+    // end of the  of the form submisssion here 
 
     return (
         <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
