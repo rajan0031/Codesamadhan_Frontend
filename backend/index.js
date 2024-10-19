@@ -7,6 +7,9 @@ const path = require('path');
 
 const app = express();
 app.use(cors());// for the inter server communication 
+// Serve static files from the uploads directory
+app.use('./uploads', express.static(path.join(__dirname, 'uploads')));
+
 
 
 const FileUploadRoutes = require("./Routes/FileUpload/FileUpload");
